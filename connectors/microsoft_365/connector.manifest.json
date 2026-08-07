@@ -1,0 +1,76 @@
+{
+  "connectorName": "microsoft_365",
+  "connectorType": "microsoft365",
+  "connectorCategory": "api",
+  "version": "1.0.0",
+  "displayName": "Microsoft 365",
+  "description": "Microsoft 365 API connector -- extracts subscribedskus via REST API.",
+  "author": "EY SAM Platform Team",
+  "createdDate": "2026-08-07",
+  "apiPipeline": {
+    "mode": "custom",
+    "authType": "oauth2",
+    "apiBaseUrl": "https://graph.microsoft.com/v1.0",
+    "tokenEndpoint": "https://login.microsoftonline.com/{MSGRAPH_TENANT_ID}/oauth2/v2.0/token"
+  },
+  "entrypoint": {
+    "module": "main",
+    "function": "collect_data"
+  },
+  "requirements": {
+    "apiDetails": true,
+    "tableDetails": true,
+    "fileDetails": false,
+    "dbDetails": false,
+    "scriptDetails": false
+  },
+  "sqlArtifacts": {
+    "modelSqlFile": "model.sql",
+    "seedDataFile": "connector_seed_data.sql"
+  },
+  "pythonModules": {
+    "dataCollection": "main.py"
+  },
+  "dependencies": {
+    "python": ">=3.9",
+    "packages": [
+      "httpx>=0.24.0",
+      "tenacity>=8.2.0",
+      "requests>=2.31.0"
+    ]
+  },
+  "dataEntities": [
+    {
+      "name": "subscribedskus",
+      "bridgeTable": "tbl_microsoft_365_subscribedskus",
+      "apiEndpoint": "/subscribedSkus",
+      "method": "GET",
+      "description": "Microsoft 365 subscribedskus data"
+    }
+  ],
+  "configParameters": {
+    "enable_pagination": true,
+    "max_retries": 3,
+    "timeout_seconds": 60,
+    "batch_size": 1000
+  },
+  "errorHandling": {
+    "errorTable": "errors.tbl_pre_process_microsoft_365",
+    "retryableErrors": [
+      429,
+      500,
+      502,
+      503
+    ],
+    "maxRetries": 3,
+    "backoffMultiplier": 2
+  },
+  "tags": [
+    "api",
+    "sam",
+    "microsoft_365",
+    "microsoft365"
+  ],
+  "isActive": true,
+  "isRegistered": false
+}

@@ -1,0 +1,33 @@
+[
+  {
+    "endpoint": "/subscribedSkus",
+    "method": "GET",
+    "full_url": "https://graph.microsoft.com/v1.0/subscribedSkus",
+    "table": "subscribedskus",
+    "array_key": null,
+    "fields": [
+      {
+        "name": "groupType",
+        "column": "grouptype",
+        "response_key": "groupType"
+      },
+      {
+        "name": "displayName",
+        "column": "displayname",
+        "response_key": "displayName"
+      }
+    ],
+    "request_params": [
+      {
+        "name": "Authorization",
+        "in": "header",
+        "type": "",
+        "required": false,
+        "description": "",
+        "value": "Bearer <YOUR_TOKEN>"
+      }
+    ],
+    "query_parameters": [],
+    "base_url_key": "default"
+  }
+]

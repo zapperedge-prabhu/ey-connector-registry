@@ -1,0 +1,18 @@
+version: "3.8"
+
+# Microsoft 365 API connector — Bridge → Source/Error pipeline.
+#
+# Quick start:
+#   cp .env.example .env
+#   podman-compose up --build
+
+services:
+  microsoft-365:
+    build:
+      context: .
+      dockerfile: Containerfile
+    env_file:
+      - .env
+    volumes:
+      - ./output:/data
+    restart: "no"
