@@ -1,0 +1,45 @@
+{
+  "connectorName": "testfile",
+  "connectorType": "testfilefile",
+  "connectorCategory": "file",
+  "version": "1.0.0",
+  "displayName": "testfile File Connector",
+  "description": "Imports testfile data from exported CSV files",
+  "author": "SAM Platform Team",
+  "createdDate": "2026-08-07",
+  "filePipeline": {
+    "mode": "generic",
+    "templateSpecPath": "file_template_specification.json"
+  },
+  "requirements": {
+    "fileDetails": true,
+    "tableDetails": true,
+    "apiDetails": false,
+    "dbDetails": false,
+    "scriptDetails": false
+  },
+  "sqlArtifacts": {
+    "modelSqlFile": "model.sql",
+    "seedDataFile": "connector_seed_data.sql"
+  },
+  "supportedStorageTypes": [
+    "sftp",
+    "shared_volume"
+  ],
+  "supportedFileFormats": [
+    "csv",
+    "zip"
+  ],
+  "configParameters": {
+    "case_insensitive_columns": true,
+    "enable_column_validation": true,
+    "encoding": "utf-8"
+  },
+  "tags": [
+    "file",
+    "testfile",
+    "full_results"
+  ],
+  "isActive": true,
+  "isRegistered": false
+}

@@ -1,0 +1,19 @@
+version: "3.8"
+
+# testfile ServiceNow connector — Bridge → Source/Error pipeline.
+#
+# Mount the directory of ServiceNow CSV exports at /data/servicenow.
+
+services:
+  testfile:
+    build:
+      context: .
+      dockerfile: Containerfile
+    env_file:
+      - .env
+    environment:
+      SOURCE_DIR: /data/servicenow
+    volumes:
+      - ./servicenow_csvs:/data/servicenow:ro
+      - ./output:/data/output
+    restart: "no"

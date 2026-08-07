@@ -1,0 +1,27 @@
+{
+  "full_results": {
+    "file": "full_results.csv",
+    "files": [
+      "full_results.csv"
+    ],
+    "columns": [
+      "true_page",
+      "json_key_used",
+      "remapped",
+      "engine",
+      "cer",
+      "wer",
+      "word_recall",
+      "elapsed_s",
+      "char_count",
+      "provided_word_hit_ratio",
+      "provided_word_hits",
+      "classification_type",
+      "classification_confidence",
+      "gt_char_len",
+      "hyp_char_len",
+      "expected_class",
+      "class_correct"
+    ]
+  }
+}
