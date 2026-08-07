@@ -1,0 +1,20 @@
+{
+  "templateType": "zip_csv",
+  "sequencePolicy": "truncate_once_then_append",
+  "tables": [
+    {
+      "tableName": "tbl_newfilebaseconnector_full_results",
+      "description": "newfilebaseconnector full results data"
+    }
+  ],
+  "options": {
+    "caseInsensitiveColumns": true,
+    "enableColumnValidation": true,
+    "unknownFileAction": "skip",
+    "encoding": "utf-8"
+  },
+  "fileNamingConvention": "newfilebaseconnector_YYYYMMDD.zip",
+  "delimiter": ",",
+  "quoteChar": "\"",
+  "escapeChar": "\\"
+}
