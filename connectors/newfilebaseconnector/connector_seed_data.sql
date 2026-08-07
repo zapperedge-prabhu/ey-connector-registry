@@ -188,8 +188,21 @@ INSERT INTO core.tbl_catalog_m (
 -- rule_query contains the SQL condition matching rows that FAIL validation.
 -- ====================================================================
 
--- No approved pre-processing rules defined for this connector.
--- Add rules via the SAM Studio Rules interface and re-generate.
+-- Rule 1: if true_page is 0 discard it
+INSERT INTO core.tbl_pre_processing_rule (
+    id, tenant_id, updated_on, updated_by, created_on, created_by,
+    is_deleted, data_tags, remarks,
+    connector_type_id, table_id, column_id,
+    column_priority_sequence, rule_name, rule_description, rule_query
+) VALUES (
+    'e6dee17d-e32f-5536-8614-0f656ada51fd'::uuid, 'c5b543aa-2701-491d-91ff-975105806193'::uuid,
+    CURRENT_TIMESTAMP, 'System', CURRENT_TIMESTAMP, 'System',
+    false, '{}', 'Pre-processing rule for tbl_newfilebaseconnector_full_results',
+    'e2d6ff70-c24b-5f58-a9aa-69cad3afff4b'::uuid, '3c87cf4f-60bc-578e-bbf2-0b22f4a92e19'::uuid, '5ed2b122-2a28-56fb-8962-b4b72a97dac7'::uuid,
+    1, 'if_true_page_is_0_discard_it', 'if true_page is 0 discard it',
+    '"true_page" ~ ''^-?\d+(\.\d+)?$''
+  AND CAST("true_page" AS NUMERIC) = 0'
+) ON CONFLICT (id) DO NOTHING;
 
 -- ====================================================================
 -- SECTION 7: POST-PROCESSING ETL RULES
